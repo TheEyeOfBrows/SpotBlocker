@@ -23,5 +23,17 @@
     <Setting Name="StartMinimized" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="WebsiteUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://github.com/TheEyeOfBrows/Spotify-Ad-Blocker</Value>
+    </Setting>
+    <Setting Name="VersionCheckUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://github.com/TheEyeOfBrows/Spotify-Ad-Blocker</Value>
+    </Setting>
+    <Setting Name="GoogleAnalyticsId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UA-117486985-1</Value>
+    </Setting>
+    <Setting Name="GoogleAnalyticsDomainHash" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">173434324</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

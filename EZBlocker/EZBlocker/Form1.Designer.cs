@@ -212,7 +212,6 @@
             this.pnlContainer.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.pnlContainer.Size = new System.Drawing.Size(596, 218);
             this.pnlContainer.TabIndex = 14;
-            this.pnlContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContainer_Paint);
             // 
             // StartMinimizedCheckbox
             // 

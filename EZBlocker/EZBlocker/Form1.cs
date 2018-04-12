@@ -54,28 +54,25 @@ namespace EZBlocker
         private const int MEDIA_NEXTTRACK = 0xB0000;
         
         private string EZBlockerUA = "EZBlocker " + Assembly.GetExecutingAssembly().GetName().Version.ToString() + " " + System.Environment.OSVersion;
-        private const string website = @"https://www.ericzhang.me/projects/spotify-ad-blocker-ezblocker/";
 
         // Google Analytics stuff
         private Random rnd;
         private long starttime, lasttime;
         private string visitorId;
         private int runs = 1;
-        private const string domainHash = "69214020";
+        private string domainHash = Properties.Settings.Default.GoogleAnalyticsDomainHash;
         private const string source = "EZBlocker";
         private string medium = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         private const string sessionNumber = "1";
         private const string campaignNumber = "1";
         private string language = Thread.CurrentThread.CurrentCulture.Name;
         private string screenRes = Screen.PrimaryScreen.Bounds.Width + "x" + Screen.PrimaryScreen.Bounds.Height;
-        private const string trackingId = "UA-42480515-3";
+        private string trackingId = Properties.Settings.Default.GoogleAnalyticsId;
 
         public Main()
         {
             InitializeComponent();
         }
-
-        
 
         /**
          * Contains the logic for when to mute Spotify
@@ -273,10 +270,14 @@ namespace EZBlocker
          **/
         private string GetPage(string URL, string ua)
         {
-            WebClient w = new WebClient();
-            w.Headers.Add("user-agent", ua);
-            string s = w.DownloadString(URL);
-            return s;
+            string result = null;
+            using (WebClient w = new WebClient())
+            {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                w.Headers.Add("user-agent", ua);
+                result = w.DownloadString(URL);
+            }
+            return result;
         }
 
         private string ShortenName(string name)
@@ -313,13 +314,17 @@ namespace EZBlocker
             }
             try
             {
-                int latest = Convert.ToInt32(GetPage("https://www.ericzhang.me/dl/?file=EZBlocker-version.txt", EZBlockerUA));
+                int latest;
+                if(! int.TryParse(GetPage(Properties.Settings.Default.VersionCheckUrl, EZBlockerUA), out latest))
+                {
+                    latest = 0;
+                }
                 int current = Convert.ToInt32(Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", ""));
                 if (latest <= current)
                     return;
                 if (MessageBox.Show("There is a newer version of EZBlocker available. Would you like to upgrade?", "EZBlocker", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    Process.Start(website);
+                    Process.Start(Properties.Settings.Default.WebsiteUrl);
                     Application.Exit();
                 }
             }
@@ -381,7 +386,7 @@ namespace EZBlocker
                         "%3B%2B__utmz%3D" + domainHash + "." + lasttime + "." + sessionNumber + "." + campaignNumber + ".utmcsr%3D" + source + "%7Cutmccn%3D(" + medium + ")%7Cutmcmd%3D" + medium + "%7Cutmcct%3D%2Fd31AaOM%3B";
                 using (var client = new WebClient())
                 {
-                    client.DownloadData(statsRequest);
+                    var result = client.DownloadData(statsRequest);
                 }
             }
             catch { /*ignore*/ }
@@ -555,13 +560,13 @@ namespace EZBlocker
         private void WebsiteLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show("Please leave a comment describing one of these problems:\r\n\r\n1. Audio ads are not muted\r\n2. Audio ads are not blocked but muted\r\n3. Banner ads are not blocked\r\n\r\nNot using one of these will cause your comment to be deleted.\r\n\r\nPlease note that #2 and #3 are experimental features and not guaranteed to work.", "EZBlocker");
-            Process.Start(website);
+            Process.Start(Properties.Settings.Default.WebsiteUrl);
             LogAction("/button/website");
         }
 
         private void AboutWebLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(@"https://github.com/Xeroday/Spotify-Ad-Blocker");
+            Process.Start(Properties.Settings.Default.WebsiteUrl);
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -719,7 +724,7 @@ namespace EZBlocker
 
         private void websiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start(website);
+            Process.Start(Properties.Settings.Default.WebsiteUrl);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -106,5 +106,41 @@ namespace EZBlocker.Properties {
                 this["StartMinimized"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/TheEyeOfBrows/Spotify-Ad-Blocker")]
+        public string WebsiteUrl {
+            get {
+                return ((string)(this["WebsiteUrl"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/TheEyeOfBrows/Spotify-Ad-Blocker")]
+        public string VersionCheckUrl {
+            get {
+                return ((string)(this["VersionCheckUrl"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("UA-117486985-1")]
+        public string GoogleAnalyticsId {
+            get {
+                return ((string)(this["GoogleAnalyticsId"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("173434324")]
+        public string GoogleAnalyticsDomainHash {
+            get {
+                return ((string)(this["GoogleAnalyticsDomainHash"]));
+            }
+        }
     }
 }
