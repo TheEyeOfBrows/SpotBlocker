@@ -75,6 +75,8 @@ namespace EZBlocker
             InitializeComponent();
         }
 
+        
+
         /**
          * Contains the logic for when to mute Spotify
          **/
@@ -385,11 +387,22 @@ namespace EZBlocker
             catch { /*ignore*/ }
         }
 
+        private void SendToTray()
+        {
+            this.WindowState = FormWindowState.Minimized;
+            this.NotifyIcon.Visible = true;
+            this.ShowInTaskbar = false;
+        }
+
         private void RestoreFromTray()
         {
+            // Visible toggle makes the redrawing of the form happen before being shown to user.
+            this.Visible = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Normal;
+            this.NotifyIcon.Visible = false;
             this.ShowInTaskbar = true;
+            this.Visible = true;
         }
         
         /**
@@ -509,6 +522,17 @@ namespace EZBlocker
             LogAction("/settings/startup/" + StartupCheckbox.Checked.ToString());
         }
 
+        private void StartMinimizedCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            bool startMinimized = StartMinimizedCheckbox.Checked;
+            if (visitorId == null) return; // Still setting up UI
+
+            Properties.Settings.Default.StartMinimized = startMinimized;
+            Properties.Settings.Default.Save();
+
+            LogAction("/settings/startminimized/" + StartMinimizedCheckbox.Checked.ToString());
+        }
+
         private void VolumeMixerButton_Click(object sender, EventArgs e)
         {
             try
@@ -620,6 +644,7 @@ namespace EZBlocker
 
             // Set up UI
             SpotifyMuteCheckbox.Checked = Properties.Settings.Default.SpotifyMute;
+            StartMinimizedCheckbox.Checked = Properties.Settings.Default.StartMinimized;
             if (File.Exists(hostsPath))
             {
                 string hostsFile = File.ReadAllText(hostsPath);
@@ -631,7 +656,6 @@ namespace EZBlocker
                 if (startupKey.GetValue("EZBlocker").ToString() == "\"" + Application.ExecutablePath + "\"")
                 {
                     StartupCheckbox.Checked = true;
-                    this.WindowState = FormWindowState.Minimized;
                 }
                 else // Reg value exists, but not in right path
                 {
@@ -674,6 +698,12 @@ namespace EZBlocker
 
             }
 
+            // Minimize at start
+            if (Properties.Settings.Default.StartMinimized)
+            {
+                SendToTray();
+            }
+
             LogAction("/launch");
         }
 
@@ -699,7 +729,7 @@ namespace EZBlocker
 
         private void btnMinimized_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            this.SendToTray();
         }
 
         private void Form_MouseDown(object sender, MouseEventArgs e)

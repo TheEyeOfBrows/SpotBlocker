@@ -43,8 +43,9 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlContainer = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.StartMinimizedCheckbox = new System.Windows.Forms.CheckBox();
+            this.RulerBottom = new System.Windows.Forms.Panel();
+            this.RulerTop = new System.Windows.Forms.Panel();
             this.imgLoading = new System.Windows.Forms.PictureBox();
             this.StartupCheckbox = new System.Windows.Forms.CheckBox();
             this.MuteButton = new System.Windows.Forms.Button();
@@ -84,7 +85,7 @@
             // NotifyIconContextMenu
             // 
             this.NotifyIconContextMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.NotifyIconContextMenu.Font = new System.Drawing.Font("Ubuntu", 10F);
+            this.NotifyIconContextMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.NotifyIconContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
             this.websiteToolStripMenuItem,
@@ -93,14 +94,14 @@
             this.NotifyIconContextMenu.Name = "NotifyIconContextMenu";
             this.NotifyIconContextMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.NotifyIconContextMenu.ShowItemToolTips = false;
-            this.NotifyIconContextMenu.Size = new System.Drawing.Size(132, 100);
+            this.NotifyIconContextMenu.Size = new System.Drawing.Size(128, 100);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(131, 30);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(127, 30);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -109,7 +110,7 @@
             this.websiteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.websiteToolStripMenuItem.Name = "websiteToolStripMenuItem";
             this.websiteToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.websiteToolStripMenuItem.Size = new System.Drawing.Size(131, 30);
+            this.websiteToolStripMenuItem.Size = new System.Drawing.Size(127, 30);
             this.websiteToolStripMenuItem.Text = "Website";
             this.websiteToolStripMenuItem.Click += new System.EventHandler(this.websiteToolStripMenuItem_Click);
             // 
@@ -118,14 +119,14 @@
             this.separatorToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.separatorToolStripMenuItem.Name = "separatorToolStripMenuItem";
             this.separatorToolStripMenuItem.Padding = new System.Windows.Forms.Padding(20, 10, 0, 0);
-            this.separatorToolStripMenuItem.Size = new System.Drawing.Size(128, 6);
+            this.separatorToolStripMenuItem.Size = new System.Drawing.Size(124, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(127, 30);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.exitToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
@@ -190,8 +191,9 @@
             // 
             // pnlContainer
             // 
-            this.pnlContainer.Controls.Add(this.panel2);
-            this.pnlContainer.Controls.Add(this.panel1);
+            this.pnlContainer.Controls.Add(this.StartMinimizedCheckbox);
+            this.pnlContainer.Controls.Add(this.RulerBottom);
+            this.pnlContainer.Controls.Add(this.RulerTop);
             this.pnlContainer.Controls.Add(this.imgLoading);
             this.pnlContainer.Controls.Add(this.VolumeMixerButton);
             this.pnlContainer.Controls.Add(this.StartupCheckbox);
@@ -203,29 +205,45 @@
             this.pnlContainer.Controls.Add(this.StatusLabel);
             this.pnlContainer.Controls.Add(this.imgSpotfy);
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlContainer.Font = new System.Drawing.Font("Ubuntu Light", 10F);
+            this.pnlContainer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.pnlContainer.ForeColor = System.Drawing.Color.White;
             this.pnlContainer.Location = new System.Drawing.Point(0, 178);
             this.pnlContainer.Name = "pnlContainer";
             this.pnlContainer.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.pnlContainer.Size = new System.Drawing.Size(596, 218);
             this.pnlContainer.TabIndex = 14;
+            this.pnlContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContainer_Paint);
             // 
-            // panel2
+            // StartMinimizedCheckbox
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.panel2.Location = new System.Drawing.Point(20, 163);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(556, 2);
-            this.panel2.TabIndex = 19;
+            this.StartMinimizedCheckbox.AutoSize = true;
+            this.StartMinimizedCheckbox.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.StartMinimizedCheckbox.FlatAppearance.BorderSize = 0;
+            this.StartMinimizedCheckbox.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.StartMinimizedCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StartMinimizedCheckbox.Location = new System.Drawing.Point(183, 155);
+            this.StartMinimizedCheckbox.Name = "StartMinimizedCheckbox";
+            this.StartMinimizedCheckbox.Size = new System.Drawing.Size(164, 21);
+            this.StartMinimizedCheckbox.TabIndex = 20;
+            this.StartMinimizedCheckbox.Text = "Start minimized to tray";
+            this.StartMinimizedCheckbox.UseVisualStyleBackColor = true;
+            this.StartMinimizedCheckbox.CheckedChanged += new System.EventHandler(this.StartMinimizedCheckbox_CheckedChanged);
             // 
-            // panel1
+            // RulerBottom
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.panel1.Location = new System.Drawing.Point(53, 68);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(488, 2);
-            this.panel1.TabIndex = 17;
+            this.RulerBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.RulerBottom.Location = new System.Drawing.Point(23, 182);
+            this.RulerBottom.Name = "RulerBottom";
+            this.RulerBottom.Size = new System.Drawing.Size(556, 2);
+            this.RulerBottom.TabIndex = 19;
+            // 
+            // RulerTop
+            // 
+            this.RulerTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.RulerTop.Location = new System.Drawing.Point(53, 68);
+            this.RulerTop.Name = "RulerTop";
+            this.RulerTop.Size = new System.Drawing.Size(488, 2);
+            this.RulerTop.TabIndex = 17;
             // 
             // imgLoading
             // 
@@ -246,9 +264,9 @@
             this.StartupCheckbox.FlatAppearance.BorderSize = 0;
             this.StartupCheckbox.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.StartupCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StartupCheckbox.Location = new System.Drawing.Point(183, 128);
+            this.StartupCheckbox.Location = new System.Drawing.Point(183, 130);
             this.StartupCheckbox.Name = "StartupCheckbox";
-            this.StartupCheckbox.Size = new System.Drawing.Size(178, 24);
+            this.StartupCheckbox.Size = new System.Drawing.Size(181, 21);
             this.StartupCheckbox.TabIndex = 3;
             this.StartupCheckbox.Text = "Start EZ Blocker on login";
             this.StartupCheckbox.UseVisualStyleBackColor = true;
@@ -276,7 +294,7 @@
             this.BlockBannersCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BlockBannersCheckbox.Location = new System.Drawing.Point(183, 105);
             this.BlockBannersCheckbox.Name = "BlockBannersCheckbox";
-            this.BlockBannersCheckbox.Size = new System.Drawing.Size(210, 24);
+            this.BlockBannersCheckbox.Size = new System.Drawing.Size(211, 21);
             this.BlockBannersCheckbox.TabIndex = 2;
             this.BlockBannersCheckbox.Text = "Disable all ads (Experimental)";
             this.BlockBannersCheckbox.UseVisualStyleBackColor = true;
@@ -288,9 +306,9 @@
             this.DesignWebLink.AutoSize = true;
             this.DesignWebLink.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.DesignWebLink.LinkColor = System.Drawing.Color.Silver;
-            this.DesignWebLink.Location = new System.Drawing.Point(403, 178);
+            this.DesignWebLink.Location = new System.Drawing.Point(462, 187);
             this.DesignWebLink.Name = "DesignWebLink";
-            this.DesignWebLink.Size = new System.Drawing.Size(173, 20);
+            this.DesignWebLink.Size = new System.Drawing.Size(117, 17);
             this.DesignWebLink.TabIndex = 6;
             this.DesignWebLink.TabStop = true;
             this.DesignWebLink.Text = "About the Project";
@@ -303,9 +321,9 @@
             this.WebsiteLink.AutoSize = true;
             this.WebsiteLink.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.WebsiteLink.LinkColor = System.Drawing.Color.Silver;
-            this.WebsiteLink.Location = new System.Drawing.Point(20, 178);
+            this.WebsiteLink.Location = new System.Drawing.Point(20, 187);
             this.WebsiteLink.Name = "WebsiteLink";
-            this.WebsiteLink.Size = new System.Drawing.Size(108, 20);
+            this.WebsiteLink.Size = new System.Drawing.Size(107, 17);
             this.WebsiteLink.TabIndex = 5;
             this.WebsiteLink.TabStop = true;
             this.WebsiteLink.Text = "Report Problem";
@@ -320,7 +338,7 @@
             this.SpotifyMuteCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SpotifyMuteCheckbox.Location = new System.Drawing.Point(183, 80);
             this.SpotifyMuteCheckbox.Name = "SpotifyMuteCheckbox";
-            this.SpotifyMuteCheckbox.Size = new System.Drawing.Size(136, 24);
+            this.SpotifyMuteCheckbox.Size = new System.Drawing.Size(132, 21);
             this.SpotifyMuteCheckbox.TabIndex = 1;
             this.SpotifyMuteCheckbox.Text = "Mute only Spotify";
             this.SpotifyMuteCheckbox.UseVisualStyleBackColor = true;
@@ -328,7 +346,7 @@
             // 
             // StatusLabel
             // 
-            this.StatusLabel.Font = new System.Drawing.Font("Ubuntu Light", 16F);
+            this.StatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.StatusLabel.Location = new System.Drawing.Point(114, 12);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(366, 50);
@@ -363,7 +381,7 @@
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Ubuntu Light", 14F);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
@@ -464,10 +482,11 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.PictureBox imgLoading;
         private System.Windows.Forms.PictureBox imgSpotfy;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel RulerTop;
+        private System.Windows.Forms.Panel RulerBottom;
         private System.Windows.Forms.LinkLabel DesignWebLink;
         private System.Windows.Forms.ToolStripSeparator separatorToolStripMenuItem;
+        private System.Windows.Forms.CheckBox StartMinimizedCheckbox;
     }
 }
 
