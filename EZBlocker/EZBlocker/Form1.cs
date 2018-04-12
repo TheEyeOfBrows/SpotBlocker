@@ -386,7 +386,7 @@ namespace EZBlocker
                         "%3B%2B__utmz%3D" + domainHash + "." + lasttime + "." + sessionNumber + "." + campaignNumber + ".utmcsr%3D" + source + "%7Cutmccn%3D(" + medium + ")%7Cutmcmd%3D" + medium + "%7Cutmcct%3D%2Fd31AaOM%3B";
                 using (var client = new WebClient())
                 {
-                    var result = client.DownloadData(statsRequest);
+                    client.DownloadData(statsRequest);
                 }
             }
             catch { /*ignore*/ }
@@ -790,6 +790,8 @@ namespace EZBlocker
                     Properties.Settings.Default.Save();
                 }
             }
+            NotifyIcon.Visible = false;
+            NotifyIcon.Icon = null;
         }
     }
 }
