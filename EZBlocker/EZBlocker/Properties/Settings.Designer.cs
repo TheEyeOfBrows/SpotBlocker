@@ -23,6 +23,9 @@ namespace EZBlocker.Properties {
             }
         }
         
+        /// <summary>
+        /// Unique ID for the current user/system.  Used in analytics.
+        /// </summary>
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -47,6 +50,9 @@ namespace EZBlocker.Properties {
             }
         }
         
+        /// <summary>
+        /// Mute only spotify
+        /// </summary>
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
@@ -71,15 +77,32 @@ namespace EZBlocker.Properties {
             }
         }
         
+        /// <summary>
+        /// Whether or not the notification about tray icons has been displayed.
+        /// </summary>
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool UserEducated2 {
+        public bool UserEducatedAboutTrayIcon {
             get {
-                return ((bool)(this["UserEducated2"]));
+                return ((bool)(this["UserEducatedAboutTrayIcon"]));
             }
             set {
-                this["UserEducated2"] = value;
+                this["UserEducatedAboutTrayIcon"] = value;
+            }
+        }
+        /// <summary>
+        /// Should analytics be sent
+        /// </summary>
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool EnableAnalytics {
+            get  {
+                return ((bool)(this["EnableAnalytics"]));
+            }
+            set {
+                this["EnableAnalytics"] = value;
             }
         }
     }

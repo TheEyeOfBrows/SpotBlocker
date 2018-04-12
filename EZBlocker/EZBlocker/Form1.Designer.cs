@@ -293,9 +293,9 @@
             this.DesignWebLink.Size = new System.Drawing.Size(173, 20);
             this.DesignWebLink.TabIndex = 6;
             this.DesignWebLink.TabStop = true;
-            this.DesignWebLink.Text = "Designe by: Bruske Design";
+            this.DesignWebLink.Text = "About the Project";
             this.DesignWebLink.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.DesignWebLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.DesignWebLink_LinkClicked);
+            this.DesignWebLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AboutWebLink_LinkClicked);
             // 
             // WebsiteLink
             // 

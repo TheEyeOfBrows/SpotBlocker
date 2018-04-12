@@ -355,6 +355,10 @@ namespace EZBlocker
          **/
         private void LogAction(string pagename)
         {
+            if (!Properties.Settings.Default.EnableAnalytics)
+            {
+                return;
+            }
             try
             {
                 lasttime = DateTime.Now.Ticks;
@@ -383,7 +387,7 @@ namespace EZBlocker
 
         private void RestoreFromTray()
         {
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
         }
@@ -417,8 +421,7 @@ namespace EZBlocker
         {
             if (!this.ShowInTaskbar && e.Button == MouseButtons.Left)
             {
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Normal;
+                RestoreFromTray();
             }
         }
 
@@ -433,10 +436,10 @@ namespace EZBlocker
             {
                 this.ShowInTaskbar = false;
                 this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-                if (!Properties.Settings.Default.UserEducated2)
+                if (!Properties.Settings.Default.UserEducatedAboutTrayIcon)
                 {
                     Notify("EZBlocker is hidden. Double-click this icon to restore.");
-                    Properties.Settings.Default.UserEducated2 = true;
+                    Properties.Settings.Default.UserEducatedAboutTrayIcon = true;
                     Properties.Settings.Default.Save();
                 }
             }
@@ -532,9 +535,9 @@ namespace EZBlocker
             LogAction("/button/website");
         }
 
-        private void DesignWebLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void AboutWebLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(@"http://www.bruske.com.br/");
+            Process.Start(@"https://github.com/Xeroday/Spotify-Ad-Blocker");
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -676,8 +679,7 @@ namespace EZBlocker
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Normal;
+            RestoreFromTray();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
