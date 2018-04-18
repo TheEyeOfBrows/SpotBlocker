@@ -120,8 +120,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="docs\index.html" />
-    <Content Include="EZ-Free-ico.ico" />
     <None Include="Resources\sb_icon_512.png" />
     <None Include="Resources\sb_title_150.png" />
     <None Include="Resources\title-bg-1.jpg" />

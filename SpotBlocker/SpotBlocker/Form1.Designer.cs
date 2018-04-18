@@ -267,9 +267,9 @@ namespace SpotBlocker
             this.StartupCheckbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartupCheckbox.Location = new System.Drawing.Point(183, 130);
             this.StartupCheckbox.Name = "StartupCheckbox";
-            this.StartupCheckbox.Size = new System.Drawing.Size(181, 21);
+            this.StartupCheckbox.Size = new System.Drawing.Size(188, 21);
             this.StartupCheckbox.TabIndex = 3;
-            this.StartupCheckbox.Text = "Start EZ Blocker on login";
+            this.StartupCheckbox.Text = "Start SpotBlocker on login";
             this.StartupCheckbox.UseVisualStyleBackColor = true;
             this.StartupCheckbox.CheckedChanged += new System.EventHandler(this.StartupCheckbox_CheckedChanged);
             // 
