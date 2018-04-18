@@ -1,6 +1,15 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+# No title on purpose
 layout: home
 ---
+{:.center .lg-only}
+![SpotBlocker Program]({{ "/assets/images/SpotBlocker_v1.0_600.jpg" | absolute_url }})
+
+{:.center .sm-only}
+![SpotBlocker Program]({{ "/assets/images/SpotBlocker_v1.0_300.jpg" | absolute_url }})
+
+## Release
+No release yet.  Check out the project repository.
+
+## Project Repository
+[Source code available on Github](https://github.com/TheEyeOfBrows/SpotBlocker)

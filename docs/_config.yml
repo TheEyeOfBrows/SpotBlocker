@@ -19,15 +19,17 @@ description: >- # this means to ignore newlines until "baseurl:"
   Ad blocker for Spotify's Windows Desktop application. 
   Blocks ads without modifying the Spotify program.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://theeyeofbrows.github.io/SpotBlocker/" # the base hostname & protocol for your site, e.g. http://example.com
+repository: "SpotBlocker/TheEyeOfBrows"
 twitter_username: TheEyeOfBrows
 github_username:  TheEyeOfBrows
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-slate
+theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

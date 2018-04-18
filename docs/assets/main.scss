@@ -1,0 +1,61 @@
+---
+# Style customizations 
+---
+@import "{{ site.theme }}";
+
+/* Site Customizations */
+$bg-light: #2D2D2D;
+$bg-dark: #1b1b1b;
+$border-color:#e8e8e8;
+$break-width: 600px;
+
+.site-title, .site-title:visited, .site-nav .page-link {
+    color: #C8C8CA;
+}
+
+a{
+    color: #C8C8CA;
+    &:visited,&:hover{
+        color: #A8A8AA;
+    }
+}
+
+body{
+    color: #FFF;
+    background-color:$bg-dark;
+}
+
+main {
+    background-color: $bg-light;
+}
+
+.site-nav{
+    @media screen and (max-width: $break-width) {
+        background-color: $bg-light;
+        border-color:$border-color;
+    }
+}
+.menu-icon svg path {
+    fill: #FFF !important;
+}
+
+.post-list li {
+    padding: 3px 6px;
+    background-color: $bg-dark;
+    border-radius: 5px;
+}
+.center{
+    text-align: center;
+}
+
+.sm-only {
+    @media screen and (min-width: $break-width){
+        display: none;
+    }
+}
+
+.lg-only {
+    @media screen and (max-width: ($break-width - 1)){
+        display: none;
+    }
+}
