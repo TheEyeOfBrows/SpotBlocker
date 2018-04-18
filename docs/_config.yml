@@ -18,8 +18,8 @@ email: ""
 description: >- # this means to ignore newlines until "baseurl:"
   Ad blocker for Spotify's Windows Desktop application. 
   Blocks ads without modifying the Spotify program.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://theeyeofbrows.github.io/SpotBlocker/" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "SpotBlocker" # the subpath of your site, e.g. /blog
+url: "https://theeyeofbrows.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 repository: "SpotBlocker/TheEyeOfBrows"
 twitter_username: TheEyeOfBrows
 github_username:  TheEyeOfBrows
