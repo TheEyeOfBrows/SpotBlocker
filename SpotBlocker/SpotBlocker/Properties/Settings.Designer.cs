@@ -109,7 +109,7 @@ namespace SpotBlocker.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/TheEyeOfBrows/Spotify-Ad-Blocker")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://theeyeofbrows.github.io/SpotBlocker/")]
         public string WebsiteUrl {
             get {
                 return ((string)(this["WebsiteUrl"]));
@@ -118,7 +118,7 @@ namespace SpotBlocker.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/TheEyeOfBrows/Spotify-Ad-Blocker")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://theeyeofbrows.github.io/SpotBlocker/version")]
         public string VersionCheckUrl {
             get {
                 return ((string)(this["VersionCheckUrl"]));

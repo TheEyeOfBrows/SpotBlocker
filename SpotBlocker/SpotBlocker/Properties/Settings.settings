@@ -24,10 +24,10 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="WebsiteUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://github.com/TheEyeOfBrows/Spotify-Ad-Blocker</Value>
+      <Value Profile="(Default)">https://theeyeofbrows.github.io/SpotBlocker/</Value>
     </Setting>
     <Setting Name="VersionCheckUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://github.com/TheEyeOfBrows/Spotify-Ad-Blocker</Value>
+      <Value Profile="(Default)">https://theeyeofbrows.github.io/SpotBlocker/version</Value>
     </Setting>
     <Setting Name="GoogleAnalyticsId" Type="System.String" Scope="Application">
       <Value Profile="(Default)">UA-117486985-1</Value>
