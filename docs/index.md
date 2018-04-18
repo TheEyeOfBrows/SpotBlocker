@@ -9,7 +9,7 @@ layout: home
 ![SpotBlocker Program]({{ "/assets/images/SpotBlocker_v1.0_300.jpg" | absolute_url }})
 
 ## Release
-No release yet.  Check out the project repository.
+[Download SpotBlocker from GitHub][https://github.com/TheEyeOfBrows/SpotBlocker/releases/latest]
 
 ## Project Repository
 [Source code available on Github](https://github.com/TheEyeOfBrows/SpotBlocker)
