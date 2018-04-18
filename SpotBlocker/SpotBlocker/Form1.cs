@@ -188,8 +188,6 @@ namespace SpotBlocker
 
             if (spotifyMute) // Mute only Spotify process
             {
-                // SpotBlocker.AudioUtilities.SetApplicationMute("spotify", muted);
-
                 MMDeviceEnumerator DevEnum = new MMDeviceEnumerator();
                 MMDevice device = DevEnum.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia);
                 AudioSessionManager2 asm = device.AudioSessionManager2;
@@ -208,7 +206,6 @@ namespace SpotBlocker
                         {
                             sessions[sid].SimpleAudioVolume.MasterVolume = volume;
                         }
-                        //sessions[sid].SimpleAudioVolume.Mute = muted;
                     }
                 }
             }
