@@ -6,6 +6,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Reflection;
 using Newtonsoft.Json;
+using SpotBlocker.DTO;
 
 namespace SpotBlocker
 {

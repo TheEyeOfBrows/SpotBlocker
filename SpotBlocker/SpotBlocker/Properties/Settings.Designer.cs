@@ -118,7 +118,7 @@ namespace SpotBlocker.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://theeyeofbrows.github.io/SpotBlocker/version")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://api.github.com/repos/TheEyeOfBrows/SpotBlocker/releases/latest")]
         public string VersionCheckUrl {
             get {
                 return ((string)(this["VersionCheckUrl"]));

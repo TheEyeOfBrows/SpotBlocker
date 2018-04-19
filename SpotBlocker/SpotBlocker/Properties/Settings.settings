@@ -27,7 +27,7 @@
       <Value Profile="(Default)">https://theeyeofbrows.github.io/SpotBlocker/</Value>
     </Setting>
     <Setting Name="VersionCheckUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://theeyeofbrows.github.io/SpotBlocker/version</Value>
+      <Value Profile="(Default)">https://api.github.com/repos/TheEyeOfBrows/SpotBlocker/releases/latest</Value>
     </Setting>
     <Setting Name="GoogleAnalyticsId" Type="System.String" Scope="Application">
       <Value Profile="(Default)">UA-117486985-1</Value>

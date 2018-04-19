@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SpotBlocker
+namespace SpotBlocker.DTO
 {
     public class Info
     {

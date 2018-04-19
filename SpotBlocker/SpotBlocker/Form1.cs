@@ -11,6 +11,8 @@ using System.Threading;
 using Microsoft.Win32;
 using System.Drawing;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using SpotBlocker.DTO;
 
 namespace SpotBlocker
 {
@@ -316,14 +318,24 @@ namespace SpotBlocker
             }
             try
             {
-                int latest;
-                if(! int.TryParse(GetPage(Properties.Settings.Default.VersionCheckUrl, SpotBlockerUA), out latest))
+
+                string releaseText = GetPage(Properties.Settings.Default.VersionCheckUrl, SpotBlockerUA);
+                GitHubRelease release = Newtonsoft.Json.JsonConvert.DeserializeObject<GitHubRelease>(releaseText);
+
+                int[] releaseSemanticVersion = Regex.Replace(release.tag_name, "[^\\d.]", "").Split(new[] { '.' }).Select(n => Convert.ToInt32(n)).ToArray();
+                if (releaseSemanticVersion.Length != 4)
                 {
-                    latest = 0;
+                    throw new Exception(string.Format("Invalid release semantic versioning [{0}]", releaseSemanticVersion.ToString()));
                 }
-                int current = Convert.ToInt32(Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".", ""));
-                if (latest <= current)
+
+                Version releaseVersion = new Version(releaseSemanticVersion[0], releaseSemanticVersion[1], releaseSemanticVersion[2], releaseSemanticVersion[3]);
+                Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+
+                if (releaseVersion <= currentVersion)
+                {
                     return;
+                }
+
                 if (MessageBox.Show("There is a newer version of SpotBlocker available. Would you like to upgrade?", "SpotBlocker", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     Process.Start(Properties.Settings.Default.WebsiteUrl);
@@ -419,6 +431,7 @@ namespace SpotBlocker
             this.WindowState = FormWindowState.Normal;
             this.NotifyIcon.Visible = false;
             this.ShowInTaskbar = true;
+            
             this.Visible = true;
         }
 
@@ -586,7 +599,7 @@ namespace SpotBlocker
             // Enable web helper
             if (File.Exists(spotifyPrefsPath))
             {
-                String[] lines = File.ReadAllLines(spotifyPrefsPath);
+                string[] lines = File.ReadAllLines(spotifyPrefsPath);
                 bool webhelperEnabled = false;
                 for (int i = 0; i < lines.Length; i++)
                 {
@@ -683,7 +696,7 @@ namespace SpotBlocker
             // Google Analytics
             rnd = new Random(Environment.TickCount);
             starttime = DateTime.Now.Ticks;
-            if (String.IsNullOrEmpty(Properties.Settings.Default.UID))
+            if (string.IsNullOrEmpty(Properties.Settings.Default.UID))
             {
                 Properties.Settings.Default.UID = rnd.Next(100000000, 999999999).ToString(); // Build unique visitorId;
                 Properties.Settings.Default.Save();
@@ -699,7 +712,8 @@ namespace SpotBlocker
                 if (MessageBox.Show("You do not have .NET Framework 4.5. Download now?", "SpotBlocker Error", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
                 {
                     Process.Start("https://www.microsoft.com/en-us/download/details.aspx?id=30653");
-                } else
+                }
+                else
                 {
                     MessageBox.Show("SpotBlocker may not function properly without .NET Framework 4.5 or above.");
                 }
@@ -718,7 +732,7 @@ namespace SpotBlocker
             // Load Images
             backgroundImages = GetBackgroundImages();
             // Assign new image
-            pnlMain.BackgroundImage =  GetRandomTitleImage();
+            pnlMain.BackgroundImage = GetRandomTitleImage();
 
             // Minimize at start
             if (Properties.Settings.Default.StartMinimized)
@@ -759,7 +773,7 @@ namespace SpotBlocker
             
             Image currentImage;
 
-            for(int i=1; i < maxNumberOfImages; i++)
+            for(int i = 1; i < maxNumberOfImages; i++)
             {
                 currentImage = Properties.Resources.ResourceManager.GetObject(titleBase+i) as Image;
                 if(currentImage == null)

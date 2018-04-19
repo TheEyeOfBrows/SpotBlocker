@@ -1,4 +1,4 @@
-﻿namespace SpotBlocker
+﻿namespace SpotBlocker.DTO
 {
     class OAuth
     {
