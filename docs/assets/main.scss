@@ -3,6 +3,8 @@
 ---
 @import "{{ site.theme }}";
 
+@import url('https://fonts.googleapis.com/css?family=Quantico');
+
 /* Site Customizations */
 $bg-light: #2D2D2D;
 $bg-dark: #1b1b1b;
@@ -12,11 +14,14 @@ $break-width: 600px;
 .site-title, .site-title:visited, .site-nav .page-link {
     color: #C8C8CA;
 }
+.site-title, h1, h2, h3{
+    font-family: 'Quantico', sans-serif;
+}
 
 a{
-    color: #C8C8CA;
+    color: rgb(255, 255, 124);
     &:visited,&:hover{
-        color: #A8A8AA;
+        color: rgb(162, 149, 80);;
     }
 }
 

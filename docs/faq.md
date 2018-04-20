@@ -4,7 +4,7 @@ title: Frequently Asked Questions
 permalink: /faq/
 ---
 
-To be added here.
+To be expanded.
 
 If you're having problems with the software, write an issue in the [project repository](https://github.com/TheEyeOfBrows/SpotBlocker).
 
